@@ -3,8 +3,8 @@
 ## Innholdsfortegnelse
 - Demo
 - Problemstilling
-- Valg av teknologi
-- Datasett benyttet
+- Teknologivalg
+- Datasett og tjenester
 - Løsningen
 - Hvordan kjøre applikasjonen
 - Lisens
@@ -18,21 +18,21 @@ Gruppen ville lage et interaktivt kart hvor en kunne se nødetater (sykehus, pol
 
 Gruppen fant raskt ut at det ikke fantes noen tilgjengelige datasett på hvor sykehus og politistasjoner ligger, men gruppen fant kart over brannstasjoner så det var det gruppen valgte å gå videre med.
 
-Som resultat av det, ble problemstillingen å "*lage et interaktivt kart hvor en kan se brannstasjoner og brannsmitteområder og se avstanden mellom disse som er viktig i analyse av innsatstiden til brannvesenet*".
+Som resultat av det, ble problemstillingen å "*lage et interaktivt kart hvor en kan se brannstasjoner og brannsmitteområder og se avstanden mellom disse, noe som er viktig for å analysere innsatstiden til brannvesenet*".
 
-## Valg av teknologi
+## Teknologivalg
 
-**Leaflet**: Gruppen valgte Leaflet på grunn av at gruppen har mest erfaring med denne kartteknologien og fordi det er en av de enklere biblotekene å bruke sammenlignet med OL og MapLibre.
+**Leaflet**: Gruppen valgte Leaflet på grunn av at gruppen har mest erfaring med denne kartteknologien og fordi det er en av de enklere bibliotekene å bruke sammenlignet med OL og MapLibre.
 
-**Supabase**: Gruppen valgte å benytte Supabase, "open-source Firebase", fordi det gir gruppen en enkel løsning på hvordan vi skal lagre kartdataen gruppen laster ned og en enkel API-løsning for å hente ut denne dataen.
+**Supabase**: Gruppen valgte å benytte Supabase, "open-source Firebase", fordi det gir gruppen en enkel løsning på hvordan vi skal lagre kartdataen gruppen laster ned og en enkel API-tilgang for å hente ut denne dataen. Supabase er bygget på PostgreSQL som støtter PostGIS som gjør det mulig å lagre og håndtere geografiske data effektivt. Supabase har også en tilstrekkelig gratisplan for små prosjekter som passer bra for denne oppgaven.
 
-**Vite**: Gruppen benyttet Vite for å kunne
+**Vite**: Gruppen valgte Vite som build tool for prosjektet. Det gir blant annet en rask utviklingsserver, enkel konfigurasjon og Hot Module Replacement.
 
 **NPM**: Gruppen benyttet NPM for å laste ned pakker til Supabase og Leaflet enkelt.
 
 **proj4**: Et bibliotek som ble benyttet for å utføre konverteringer mellom kartografiske projeksjoner.
 
-## Datasett benyttet
+## Datasett og tjenester
 
 **Topografisk Norgeskart WMS**: For å enkelt legge et norsk grunnkart over OpenStreetmap som Leaflet har som standard. Det gir også applikasjonen et mer beskrivende kart.
 - lenke: https://kartkatalog.geonorge.no/metadata/topografisk-norgeskart-wms/f004268c-d4a1-4801-91cb-daa46236fab7
@@ -49,11 +49,18 @@ Som resultat av det, ble problemstillingen å "*lage et interaktivt kart hvor en
 Beskrivelse av løsningen.
 
 ## Hvordan kjøre applikasjon selv
+
+```bash
+git clone <repo-url>  
+cd <mappenavn>
+```
+
+
 ```bash
 npm install
 ```
 
-Lag en .env fil med Supabase API-nøkler til din database.
+Opprett en .env fil med Supabase API-nøkler til din database.
 
 VITE_SUPABASE_URL
 VITE_SUPABASE_ANON_KEY
