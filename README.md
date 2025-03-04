@@ -10,7 +10,7 @@
 - [Lisens](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling#lisens)
 
 ## Demo
-![image](https://github.com/user-attachments/assets/eac30393-82a8-4433-ba88-b273f36c45b9)
+![image](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling/raw/main/Demo.mkv)
 demo here
 
 ## Problemstilling
