@@ -3,8 +3,8 @@
 ## Innholdsfortegnelse
 - [Demo](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling#demo)
 - [Problemstilling](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling#problemstilling)
-- Teknologivalg
-- Datasett og tjenester
+- [Teknologivalg](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling#teknologivalg)
+- [Datasett og tjenester](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling#problemstilling)
 - Løsningen
 - Hvordan kjøre applikasjonen
 - Lisens
