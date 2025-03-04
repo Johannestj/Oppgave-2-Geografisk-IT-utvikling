@@ -11,7 +11,8 @@
 
 ## Demo (bilder eller video/gif)
 demo here
-![sio bibble](https://static.wikia.nocookie.net/starwars/images/3/39/SioBibble-SWE.png/revision/latest?cb=20211214011231)
+![image](https://github.com/user-attachments/assets/eac30393-82a8-4433-ba88-b273f36c45b9)
+
 
 ## Problemstilling
 Gruppen ville lage et interaktivt kart hvor en kunne se nødetater (sykehus, politistasjon og brannstasjoner) og hvor langt unna disse befinner seg områder hvor det er behov for nødhjelp.
