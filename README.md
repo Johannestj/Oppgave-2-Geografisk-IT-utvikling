@@ -10,10 +10,10 @@
 - [Lisens](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling#lisens)
 
 ## Demo
-https://youtu.be/0snKqaEQkG4 
+[https://youtu.be/0snKqaEQkG4 ](https://github.com/user-attachments/assets/131df351-6d2e-4d89-be05-939f9672c7d8)
 
 <a href="https://youtu.be/0snKqaEQkG4 ">
-  <img src="https://youtu.be/0snKqaEQkG4 " alt="Se videoen" width="600">
+  <img src="https://youtu.be/0snKqaEQkG4 " alt="Se videoen på yt" width="600">
 </a>
 
 ## Problemstilling
