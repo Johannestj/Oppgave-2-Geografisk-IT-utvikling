@@ -45,7 +45,7 @@ Som resultat av det, ble problemstillingen å "*lage et interaktivt kart hvor en
 
 ## Løsningen
 
-# Webapplikasjon av kartløsning hvor bruker kan plassere markør for å beregne ruten til næreste brannstasjon.
+**Webapplikasjon av kartløsning hvor bruker kan plassere markør for å beregne ruten til næreste brannstasjon.** 
 
 Brannstasjonslokasjon data blir hentet fra Supabase og blir representert som røde punkter grafisk på kartet.
 Når bruker plasserer en markør på kartet vil en algoritme beregne raskeste rute til den nærmeste brannstasjonen.
