@@ -2,60 +2,60 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { getWmsLayer } from './services/wms.js';
 import { getSupabaseFireStation } from './services/supabase.js';
+import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
+import 'leaflet-routing-machine';
 import proj4 from 'proj4';
 
 // Define the projection (UTM Zone 32N)
 proj4.defs('EPSG:25832', '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs');
 
 export function initializeMap() {
-  const map = L.map('app').setView([58.1467, 7.9956], 13);
+  // Create map and assign to window object
+  const map = L.map('app').setView([58.1467, 7.9956], 12);
+  window.map = map; // Make map globally accessible
 
   // Add WMS layer from Kartverket
   const wmsLayer = getWmsLayer();
   wmsLayer.addTo(map);
 
+  // Routing control with global reference
+  const routing = L.Routing.control({
+    waypoints: [
+      L.latLng(58.1467, 7.9956), // Start point (example coordinates)
+      L.latLng(58.6792, 8.949)   // End point (example coordinates)
+    ],
+    routeWhileDragging: true
+  }).addTo(map);
+  window.routing = routing; // Make routing globally accessible
+
   // Fetch data from Supabase and add to map
   getSupabaseFireStation()
     .then((data) => {
-      console.log('Data from Supabase:', data); // Debug log
+      console.log('Data from Supabase:', data);
 
-      // Check if data is an array
       if (Array.isArray(data)) {
         data.forEach((point) => {
-          console.log('Processing point:', point); // Debug log
+          console.log('Processing point:', point);
 
           if (point && point.posisjon) {
-            // For now, let's handle the WKB data differently without relying on the wkx library
             if (
               typeof point.posisjon === 'string' &&
               point.posisjon.startsWith('01010000')
             ) {
-              // This is likely a WKB hex string for a point
-              // We'll use a backend API service to parse it or use a different approach
               console.log('Got WKB data:', point.posisjon);
 
-              // Alternative 1: If you have the coordinates in another field, use those
               if (point.latitude && point.longitude) {
                 addMarkerToMap(map, point.latitude, point.longitude, point.brannstasjon);
               }
-              // Alternative 2: Make a separate API call to convert WKB to coordinates
-              else {
-                // Example: fetchCoordinatesFromWKB(point.posisjon)
-                //    .then(({lat, lng}) => addMarkerToMap(map, lat, lng, point.brannstasjon));
-              }
             }
-            // Handle other formats as before
             else if (typeof point.posisjon === 'object') {
               if (point.posisjon.coordinates) {
                 const [x, y] = point.posisjon.coordinates;
 
-                // Check if these are UTM coordinates (roughly in Norway's range)
                 if (x > 10000 && x < 1000000 && y > 6000000 && y < 8000000) {
-                  // These are UTM coordinates, use a conversion function
                   const { latitude, longitude } = utmToLatLon(x, y);
                   addMarkerToMap(map, latitude, longitude, point.brannstasjon);
                 } else {
-                  // Assume these are already lon/lat coordinates
                   const [longitude, latitude] = [x, y];
                   addMarkerToMap(map, latitude, longitude, point.brannstasjon);
                 }
@@ -64,7 +64,6 @@ export function initializeMap() {
                 addMarkerToMap(map, latitude, longitude, point.brannstasjon);
               }
             }
-            // Add more cases as needed
           }
         });
       } else {
@@ -74,6 +73,37 @@ export function initializeMap() {
     .catch((error) => {
       console.error('Error in map initialization:', error);
     });
+
+  // Map click event handler
+  map.on('click', function(e) {
+    var container = L.DomUtil.create('div'),
+        startBtn = createButton('Start from this location', container),
+        destBtn = createButton('Go to this location', container);
+
+    // Add functionality to buttons
+    startBtn.addEventListener('click', function() {
+      routing.setWaypoints([
+        L.latLng(e.latlng.lat, e.latlng.lng),
+        routing.getWaypoints()[1].latLng
+      ]);
+      map.closePopup();
+    });
+
+    destBtn.addEventListener('click', function() {
+      routing.setWaypoints([
+        routing.getWaypoints()[0].latLng,
+        L.latLng(e.latlng.lat, e.latlng.lng)
+      ]);
+      map.closePopup();
+    });
+
+    L.popup()
+      .setContent(container)
+      .setLatLng(e.latlng)
+      .openOn(map);
+  });
+
+  return map;
 }
 
 function utmToLatLon(easting, northing) {
@@ -92,4 +122,11 @@ function addMarkerToMap(map, latitude, longitude, name) {
   })
     .addTo(map)
     .bindPopup(name || 'Fire Station');
+}
+
+function createButton(label, container) {
+  var btn = L.DomUtil.create('button', '', container);
+  btn.setAttribute('type', 'button');
+  btn.innerHTML = label;
+  return btn;
 }
