@@ -30,7 +30,9 @@ Som resultat av det, ble problemstillingen å "*lage et interaktivt kart hvor en
 
 **NPM**: "Node Package Manager" Gruppen benyttet NPM for å styre nedlasting og bruk av pakker i prosjektet. Pakker til Leaflet, Supabase og støttefunksjoner ble blant annet brukt.
 
-**proj4**: Et bibliotek som ble benyttet for å utføre konverteringer mellom kartografiske projeksjoner.
+**proj4**: Et bibliotek som ble benyttet for å utføre konverteringer mellom kartografiske projeksjoner
+
+**Leaflet Routing Machine**: Bibliotek benyttet for å enkelt implementere ruting i Leaflet kartet. 
 
 ## Datasett og tjenester
 
