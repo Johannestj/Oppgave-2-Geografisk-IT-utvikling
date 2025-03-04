@@ -42,13 +42,13 @@ Som resultat av det, ble problemstillingen å "*lage et interaktivt kart hvor en
 **Brannstasjoner**: For å få punkter over brannstasjoner i Agder ble dette datasettet benyttet.
 - lenke: https://kartkatalog.geonorge.no/metadata/brannstasjoner/0ccce81d-a72e-46ca-8bd9-57b362376485
 
-**Brannsmitteområder**: For å få oversikt over områder i Agder som har spesielt stor fare for at brann i en bygning skal spre seg videre.
-- Lenke: https://kartkatalog.geonorge.no/metadata/kulturminner-brannsmitteomraader/73f863ba-628f-48af-b7fa-30d3ab331b8d?search=brannsmitte
-
 
 ## Løsningen
 
-Beskrivelse av løsningen.
+# Webapplikasjon av kartløsning hvor bruker kan plassere markør for å beregne ruten til næreste brannstasjon.
+
+Brannstasjonslokasjon data blir hentet fra Supabase og blir representert som røde punkter grafisk på kartet.
+Når bruker plasserer en markør på kartet vil en algoritme beregne raskeste rute til den nærmeste brannstasjonen.
 
 ## Hvordan kjøre applikasjon selv
 
