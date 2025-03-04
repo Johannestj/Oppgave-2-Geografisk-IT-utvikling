@@ -18,7 +18,14 @@ Gruppen ville lage et interaktivt kart hvor en kunne se nødetater (sykehus, pol
 
 Gruppen fant raskt ut at det ikke fantes noen tilgjengelige datasett på hvor sykehus og politistasjoner ligger, men gruppen fant kart over brannstasjoner så det var det gruppen valgte å gå videre med.
 
-Som resultat av det, ble problemstillingen å "*lage et interaktivt kart hvor en kan se brannstasjoner og brannsmitteområder og se avstanden mellom disse, noe som er viktig for å analysere innsatstiden til brannvesenet*".
+Direktoratet for samfunnsikkerhet og beredskap (DSB) har krav for maksimal utrykknigstid. Brann- og redningsvesentets utrykningstid skal ikke overstige 10 minutter ved brann i
+-  tettbebyggelse med særlig fare for rask og omfattende brannspredning
+-  sykehus, sykehjem og lignende institusjoner som krever assistert rømning
+-  områder med konsentrert og omfattende næringsdrift eller lignende
+
+Videre skal utrykningstiden ikke overstige 20 minutter ved brann i tettsteder, og 30 minutter utenfor tettsteder.
+
+Som resultat av det, ble problemstillingen å "*lage et interaktivt kart hvor en kan se brannstasjoner og beregne avstanden, samt tid fra dem, og til ønsket sted, noe som er viktig for å analysere innsatstiden til brannvesenet*".
 
 ## Teknologivalg
 
