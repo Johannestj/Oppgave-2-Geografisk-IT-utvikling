@@ -10,8 +10,11 @@
 - [Lisens](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling#lisens)
 
 ## Demo
-![image](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling/raw/main/Demo.mkv)
-demo here
+https://youtu.be/0snKqaEQkG4 
+
+<a href="https://youtu.be/0snKqaEQkG4 ">
+  <img src="https://youtu.be/0snKqaEQkG4 " alt="Se videoen" width="600">
+</a>
 
 ## Problemstilling
 Gruppen ville lage et interaktivt kart hvor en kunne se nødetater (sykehus, politistasjon og brannstasjoner) og hvor langt unna disse befinner seg områder hvor det er behov for nødhjelp.
