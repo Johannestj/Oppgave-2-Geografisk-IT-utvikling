@@ -28,7 +28,7 @@ Som resultat av det, ble problemstillingen å "*lage et interaktivt kart hvor en
 
 **Vite**: Gruppen valgte Vite som build tool for prosjektet. Det gir blant annet en rask utviklingsserver, enkel konfigurasjon og Hot Module Replacement.
 
-**NPM**: Gruppen benyttet NPM for å laste ned pakker til Supabase og Leaflet enkelt.
+**NPM**: "Node Package Manager" Gruppen benyttet NPM for å styre nedlasting og bruk av pakker i prosjektet. Pakker til Leaflet, Supabase og støttefunksjoner ble blant annet brukt.
 
 **proj4**: Et bibliotek som ble benyttet for å utføre konverteringer mellom kartografiske projeksjoner.
 
