@@ -10,9 +10,8 @@
 - Lisens
 
 ## Demo (bilder eller video/gif)
-demo here
 ![image](https://github.com/user-attachments/assets/eac30393-82a8-4433-ba88-b273f36c45b9)
-
+demo here
 
 ## Problemstilling
 Gruppen ville lage et interaktivt kart hvor en kunne se nødetater (sykehus, politistasjon og brannstasjoner) og hvor langt unna disse befinner seg områder hvor det er behov for nødhjelp.
