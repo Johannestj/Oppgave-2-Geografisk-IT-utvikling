@@ -63,6 +63,7 @@ npm install
 Opprett en .env fil med Supabase API-nøkler til din database.
 
 VITE_SUPABASE_URL
+
 VITE_SUPABASE_ANON_KEY
 
 ```bash
