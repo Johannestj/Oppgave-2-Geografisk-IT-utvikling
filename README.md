@@ -5,9 +5,9 @@
 - [Problemstilling](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling#problemstilling)
 - [Teknologivalg](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling#teknologivalg)
 - [Datasett og tjenester](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling#datasett-og-tjenester)
-- Løsningen
-- Hvordan kjøre applikasjonen
-- Lisens
+- [Løsningen](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling?tab=readme-ov-file#l%C3%B8sningen)
+- [Hvordan kjøre applikasjonen](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling#hvordan-kj%C3%B8re-applikasjon-selv)
+- [Lisens](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling#lisens)
 
 ## Demo
 ![image](https://github.com/user-attachments/assets/eac30393-82a8-4433-ba88-b273f36c45b9)
