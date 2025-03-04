@@ -9,6 +9,9 @@ import proj4 from 'proj4';
 // Define the projection (UTM Zone 32N)
 proj4.defs('EPSG:25832', '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs');
 
+// Array to store fire station coordinates
+const fireStations = [];
+
 export function initializeMap() {
   // Create map and assign to window object
   const map = L.map('app').setView([58.1467, 7.9956], 12);
@@ -20,11 +23,8 @@ export function initializeMap() {
 
   // Routing control with global reference
   const routing = L.Routing.control({
-    waypoints: [
-      L.latLng(58.1467, 7.9956), // Start point (example coordinates)
-      L.latLng(58.6792, 8.949)   // End point (example coordinates)
-    ],
-    routeWhileDragging: true
+    waypoints: [],
+    routeWhileDragging: true,
   }).addTo(map);
   window.routing = routing; // Make routing globally accessible
 
@@ -46,22 +46,41 @@ export function initializeMap() {
 
               if (point.latitude && point.longitude) {
                 addMarkerToMap(map, point.latitude, point.longitude, point.brannstasjon);
+                // Store fire station location
+                fireStations.push({
+                  latLng: L.latLng(point.latitude, point.longitude),
+                  name: point.brannstasjon,
+                });
               }
-            }
-            else if (typeof point.posisjon === 'object') {
+            } else if (typeof point.posisjon === 'object') {
               if (point.posisjon.coordinates) {
                 const [x, y] = point.posisjon.coordinates;
 
                 if (x > 10000 && x < 1000000 && y > 6000000 && y < 8000000) {
                   const { latitude, longitude } = utmToLatLon(x, y);
                   addMarkerToMap(map, latitude, longitude, point.brannstasjon);
+                  // Store fire station location
+                  fireStations.push({
+                    latLng: L.latLng(latitude, longitude),
+                    name: point.brannstasjon,
+                  });
                 } else {
                   const [longitude, latitude] = [x, y];
                   addMarkerToMap(map, latitude, longitude, point.brannstasjon);
+                  // Store fire station location
+                  fireStations.push({
+                    latLng: L.latLng(latitude, longitude),
+                    name: point.brannstasjon,
+                  });
                 }
               } else if (Array.isArray(point.posisjon)) {
                 const [longitude, latitude] = point.posisjon;
                 addMarkerToMap(map, latitude, longitude, point.brannstasjon);
+                // Store fire station location
+                fireStations.push({
+                  latLng: L.latLng(latitude, longitude),
+                  name: point.brannstasjon,
+                });
               }
             }
           }
@@ -74,36 +93,49 @@ export function initializeMap() {
       console.error('Error in map initialization:', error);
     });
 
-  // Map click event handler
-  map.on('click', function(e) {
-    var container = L.DomUtil.create('div'),
-        startBtn = createButton('Start from this location', container),
-        destBtn = createButton('Go to this location', container);
+  // Map click event handler - modified to set destination only
+  map.on('click', function (e) {
+    // Find the closest fire station to the clicked point
+    const closestStation = findClosestFireStation(e.latlng);
 
-    // Add functionality to buttons
-    startBtn.addEventListener('click', function() {
-      routing.setWaypoints([
-        L.latLng(e.latlng.lat, e.latlng.lng),
-        routing.getWaypoints()[1].latLng
-      ]);
-      map.closePopup();
-    });
+    if (!closestStation) {
+      alert('No fire stations available');
+      return;
+    }
 
-    destBtn.addEventListener('click', function() {
-      routing.setWaypoints([
-        routing.getWaypoints()[0].latLng,
-        L.latLng(e.latlng.lat, e.latlng.lng)
-      ]);
-      map.closePopup();
-    });
+    // Set waypoints directly - from closest station to clicked point
+    routing.setWaypoints([closestStation.latLng, e.latlng]);
 
+    // Show which fire station was selected
     L.popup()
-      .setContent(container)
-      .setLatLng(e.latlng)
+      .setLatLng(closestStation.latLng)
+      .setContent(`<b>Starting from:</b> ${closestStation.name || 'Fire Station'}`)
       .openOn(map);
   });
 
   return map;
+}
+
+// Function to find the closest fire station using Leaflet's built-in distance calculation
+function findClosestFireStation(latLng) {
+  if (fireStations.length === 0) {
+    return null;
+  }
+
+  let closest = fireStations[0];
+  let minDistance = latLng.distanceTo(closest.latLng);
+
+  for (let i = 1; i < fireStations.length; i++) {
+    const station = fireStations[i];
+    const distance = latLng.distanceTo(station.latLng);
+
+    if (distance < minDistance) {
+      minDistance = distance;
+      closest = station;
+    }
+  }
+
+  return closest;
 }
 
 function utmToLatLon(easting, northing) {
