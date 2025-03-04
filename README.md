@@ -1,7 +1,7 @@
 # Oppgave 2: Geografisk IT-utvikling
 
 ## Innholdsfortegnelse
-- Demo
+- [Demo](https://github.com/Johannestj/Oppgave-2-Geografisk-IT-utvikling/blob/main/README.md#demo)
 - Problemstilling
 - Teknologivalg
 - Datasett og tjenester
